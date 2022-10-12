@@ -58,3 +58,596 @@
                     </div>
                 </nav>
             </aside>
+
+
+            <main class="col bg-faded py-3" id="main-doc">
+                <header class="h1">TypeScript Documentation Page</header>
+                <section class="main-section" id="Introduction">
+                    <header class="h2">Introduction</header>
+                    <article>
+                        <p> TypeScript is an open-source programming language developed and maintained by Microsoft. It
+                            is a
+                            strict
+                            syntactical superset of JavaScript, and adds optional static typing to the language.</p>
+
+                        <p> TypeScript is designed for development of large applications and transcompiles to
+                            JavaScript. As
+                            TypeScript is a superset of JavaScript, existing JavaScript programs are also valid
+                            TypeScript
+                            programs. TypeScript may be used to develop JavaScript applications for both client-side
+                            and
+                            server-side (Node.js) execution.</p>
+
+                        <p> TypeScript supports definition files that can contain type information of existing
+                            JavaScript
+                            libraries, much like C++ header files can describe the structure of existing object files.
+                            This
+                            enables
+                            other programs to use the values defined in the files as if they were statically typed
+                            TypeScript
+                            entities. There are third-party header files for popular libraries such as jQuery, MongoDB,
+                            and
+                            D3.js.
+                            TypeScript headers for the Node.js basic modules are also available, allowing development
+                            of
+                            Node.js
+                            programs within TypeScript. </p>
+
+                        <p> The TypeScript compiler is itself written in TypeScript and compiled to JavaScript. It is
+                            licensed
+                            under the Apache 2 License. </p>
+
+                        <p> TypeScript is included as a first-class programming language in Microsoft Visual Studio
+                            2013 Update
+                            2
+                            and later, beside C# and other Microsoft languages. An official extension allows Visual
+                            Studio 2012
+                            to support TypeScript as well.</p>
+
+                        <p> Anders Hejlsberg, lead architect of C# and creator of Delphi and Turbo Pascal, has worked
+                            on the
+                            development of TypeScript</p>
+                    </article>
+                </section>
+                <section class="main-section" id="Basic_Types">
+                    <header class="h2">Basic Types</header>
+                    <article><br>
+                        <li class="h3">Boolean</li>
+                        <p>The most basic datatype is the simple true/false value, which JavaScript and TypeScript call
+                            a
+                            boolean value.</p>
+                        <code  class="code-box">let isDone: boolean = false;<br></code><br>
+                        <li class="h3">Number</li>
+                        <p>As in JavaScript, all numbers in TypeScript are floating point values. These floating point
+                            numbers
+                            get the type number. In addition to hexadecimal and decimal literals, TypeScript also
+                            supports
+                            binary and octal literals introduced in ECMAScript 2015.</p>
+                        <code class="code-box">let decimal: number = 6;<br>
+                            let hex: number = 0xf00d;<br>
+                            let binary: number = 0b1010;<br>
+                            let octal: number = 0o744;</code><br>
+
+                        <li class="h3">String</li>
+                        <p> Another fundamental part of creating programs in JavaScript for webpages and servers alike
+                            is
+                            working
+                            with textual data. As in other languages, we use the type string to refer to these textual
+                            datatypes.
+                            Just like JavaScript, TypeScript also uses double quotes (<code>"</code>) or single quotes
+                            (<code>'</code>)
+                            to surround
+                            string
+                            data.</p>
+
+                        <code  class="code-box"> let color: string = "blue"; <br>
+                        color = 'red';</code><br>
+
+                        <p> You can also use template strings, which can span multiple lines and have embedded
+                            expressions.
+                            These
+                            strings are surrounded by the backtick/backquote (`) character, and embedded expressions
+                            are of the
+                            form <code>${ expr }</code>.</p>
+
+                        <code  class="code-box"> let fullName: string = `Bob Bobbington`; <br>
+                        let age: number = 37; <br>
+                        let sentence: string = `Hello, my name is ${ fullName }. <br>
+        
+                        I'll be ${ age + 1 } years old next month.`; </code>
+
+                        <p>This is equivalent to declaring sentence like so:</p>
+
+                        <code  class="code-box"> let sentence: string = "Hello, my name is " + fullName + ".\n\n" +
+                        "I'll be " + (age + 1) + " years old next month."; </code><br>
+
+                        <li class="h3">Array</li>
+                        <p> TypeScript, like JavaScript, allows you to work with arrays of values. Array types can be
+                            written
+                            in
+                            one of two ways. In the first, you use the type of the elements followed by <code>[]</code>
+                            to
+                            denote an array of
+                            that element type:</p>
+                        <code class="code-box">
+                        let list: number[] = [1, 2, 3]; <br>
+                        The second way uses a generic array type, Array <elemType>: <br>
+                        let list: Array<number> = [1, 2, 3];</code><br>
+
+                        <li class="h3">Enum</li>
+                        <p>A helpful addition to the standard set of datatypes from JavaScript is the enum. As in
+                            languages
+                            like
+                            C#, an enum is a way of giving more friendly names to sets of numeric values.</p>
+
+                        <code class="code-box">enum Color {Red, Green, Blue} <br>
+                        let c: Color = Color.Green;</code>
+                        <p>By default, enums begin numbering their members starting at 0. You can change this by manually setting
+                        the value of one of its members. For example, we can start the previous example at 1 instead of 0:</p>
+
+                        <code class="code-box">enum Color {Red = 1, Green, Blue} <br>
+                        let c: Color = Color.Green;</code>
+
+                        <p>Or, even manually set all the values in the enum:</p>
+
+                        <code class="code-box">enum Color {Red = 1, Green = 2, Blue = 4} <br>
+                        let c: Color = Color.Green;</code>
+                        <p>A handy feature of enums is that you can also go from a numeric value to the name of that
+                            value in
+                            the
+                            enum. For example, if we had the value 2 but weren’t sure what that mapped to in the Color
+                            enum
+                            above,
+                            we could look up the corresponding name:</p>
+
+                        <code class="code-box">enum Color {Red = 1, Green, Blue} <br>
+                        let colorName: string = Color[2]; <br>
+        
+                        console.log(colorName); // Displays 'Green' as its value is 2 above</code><br>
+
+                        <li class="h3">Any</li>
+                        <p>We may need to describe the type of variables that we do not know when we are writing an
+                            application.
+                            These values may come from dynamic content, e.g. from the user or a 3rd party library. In
+                            these
+                            cases,
+                            we want to opt-out of type-checking and let the values pass through compile-time checks. To
+                            do so,
+                            we
+                            label these with the any type:</p>
+
+                        <code class="code-box">let notSure: any = 4; <br>
+                        notSure = "maybe a string instead"; <br>
+                        notSure = false; // okay, definitely a boolean</code>
+                        <p>The any type is a powerful way to work with existing JavaScript, allowing you to gradually
+                            opt-in
+                            and
+                            opt-out of type-checking during compilation. You might expect Object to play a similar
+                            role, as it
+                            does
+                            in other languages. But variables of type Object only allow you to assign any value to them
+                            - you
+                            can’t
+                            call arbitrary methods on them, even ones that actually exist:</p>
+
+                        <code class="code-box">let notSure: any = 4;
+                        notSure.ifItExists(); // okay, ifItExists might exist at runtime
+                        notSure.toFixed(); // okay, toFixed exists (but the compiler doesn't check)
+        
+                        let prettySure: Object = 4;
+                        prettySure.toFixed(); // Error: Property 'toFixed' doesn't exist on type 'Object'.</code>
+                        <p>The any type is also handy if you know some part of the type, but perhaps not all of it. For
+                            example,
+                            you may have an array but the array has a mix of different types:</p>
+
+                        <code class="code-box">let list: any[] = [1, true, "free"]; <br>
+        
+                        list[1] = 100;</code><br>
+
+                        <li class="h3">Void</li>
+                        <p>void is a little like the opposite of any: the absence of having any type at all. You may
+                            commonly
+                            see
+                            this as the return type of functions that do not return a value:</p>
+
+                        <code class="code-box">function warnUser(): void { <br>
+                        console.log("This is my warning message"); <br>
+                        }</code>
+                        <p>Declaring variables of type void is not useful because you can only assign undefined or null
+                            to
+                            them:</p>
+
+                        <code class="code-box">let unusable: void = undefined; </code><br>
+
+                        <li class="h3">Null and Undefined</li>
+
+                        <p>In TypeScript, both undefined and null actually have their own types named undefined and
+                            null
+                            respectively. Much like void, they’re not extremely useful on their own:</p>
+
+                        <code class="code-box">// Not much else we can assign to these variables! <br>
+                        let u: undefined = undefined; <br>
+                        let n: null = null;</code>
+
+                        <p>By default <code>null</code> and <code>undefined</code> are subtypes of all other types.
+                            That means
+                            you can assign null and
+                            undefined to something like number.</p>
+
+                        <p>However, when using the <code>--strictNullChecks</code> flag, null and undefined are only
+                            assignable
+                            to void and
+                            their respective types. This helps avoid many common errors. In cases where you want to
+                            pass in
+                            either
+                            a string or null or undefined, you can use the union type string | null | undefined. Once
+                            again,
+                            more
+                            on union types later on.</p>
+
+                        <p>As a note: we encourage the use of <code>--strictNullChecks</code> when possible, but for
+                            the
+                            purposes of this
+                            handbook, we will assume it is turned off.</p><br>
+
+                        <li class="h3">Never</li>
+                        <p>The never type represents the type of values that never occur. For instance, never is the
+                            return
+                            type
+                            for a function expression or an arrow function expression that always throws an exception
+                            or one
+                            that
+                            never returns; Variables also acquire the type never when narrowed by any type guards that
+                            can
+                            never be
+                            true.</p>
+
+                        <p>The never type is a subtype of, and assignable to, every type; however, no type is a subtype
+                            of, or
+                            assignable to, never (except never itself). Even any isn’t assignable to never.</p>
+
+                        <p>Some examples of functions returning never:</p>
+
+                        <code class="code-box">// Function returning never must have unreachable end point <br>
+                        function error(message: string): never { <br>
+                        throw new Error(message); <br>
+                        } <br>
+                        <br>
+                        // Inferred return type is never <br>
+                        function fail() { <br>
+                        return error("Something failed"); <br>
+                        } <br>
+                        <br>
+                        // Function returning never must have unreachable end point <br>
+                        function infiniteLoop(): never { <br>
+                        while (true) { <br>
+                        } <br>
+                        }</code><br>
+
+                        <li class="h3">Object</li>
+                        <p>object is a type that represents the non-primitive type, i.e. any thing that is not number,
+                            string,
+                            boolean, symbol, null, or undefined.</p>
+
+                        <p>With object type, APIs like Object.create can be better represented. For example:</p>
+
+                        <code class="code-box">declare function create(o: object | null): void; <br>
+                            <br>
+                        create({ prop: 0 }); // OK <br>
+                        create(null); // OK <br>
+                            <br>
+                        create(42); // Error <br>
+                        create("string"); // Error <br>
+                        create(false); // Error <br>
+                        create(undefined); // Error</code>
+                        <br>
+                        <h3>A note about <code>let</code></h3>
+                        <p>You may’ve noticed that so far, we’ve been using the let keyword instead of JavaScript’s
+                            <code>var</code>
+                            keyword
+                            which you might be more familiar with. The <code>let</code> keyword is actually a newer
+                            JavaScript
+                            construct that
+                            TypeScript makes available. We’ll discuss the details later, but many common problems in
+                            JavaScript
+                            are
+                            alleviated by using <code>let</code>, so you should use it instead of <code>var</code>
+                            whenever
+                            possible.</p>
+                    </article>
+                </section>
+                <section class="main-section" id="Variable_Declarations">
+                    <header class="h2">Variable Declarations</header>
+                    <article>
+                        <p><code>let</code> and <code>const</code> are two relatively new types of variable
+                            declarations in
+                            JavaScript. As we mentioned
+                            earlier, <code>let</code> is similar to <code>var</code> in some respects, but allows users
+                            to
+                            avoid some of the common “gotchas”
+                            that users run into in JavaScript. <code>const</code> is an augmentation of <code>let</code>
+                            in
+                            that it prevents re-assignment to
+                            a variable.
+
+                            With TypeScript being a superset of JavaScript, the language naturally supports <code>let</code>
+                            and <code>const</code>. Here
+                            we’ll elaborate more on these new declarations and why they’re preferable to <code>var</code>.
+
+                            If you’ve used JavaScript offhandedly, the next section might be a good way to refresh your
+                            memory.
+                            If
+                            you’re intimately familiar with all the quirks of <code>var</code> declarations in
+                            JavaScript, you
+                            might find it
+                            easier to skip ahead. </p>
+
+                        <h3>var Declarations</h3>
+                        <p>Declaring a variable in JavaScript has always traditionally been done with the <code>var</code>
+                            keyword.</p>
+
+                        <code class="code-box">var a = 10;</code>
+                        <p>As you might’ve figured out, we just declared a variable named a with the value 10.</p>
+
+                        <p>We can also declare a variable inside of a function:</p>
+
+                        <code class="code-box">function f() { <br>
+                        var message = "Hello, world!"; <br>
+                            <br>
+                        return message; <br>
+                        }</code>
+                        <p>and we can also access those same variables within other functions:</p>
+
+                        <code class="code-box">function f() { <br>
+                        var a = 10; <br>
+                        return function g() { <br>
+                        var b = a + 1; <br>
+                        return b; <br>
+                        } <br>
+                        } <br>
+                        <br>
+                        var g = f(); <br>
+                        g(); // returns '11'</code>
+                        <br>
+
+                        <h3><code>let</code> declarations</h3>
+                        <p>By now you’ve figured out that <code>var</code> has some problems, which is precisely why
+                            <code>let</code>
+                            statements were
+                            introduced. Apart from the keyword used, <code>let</code> statements are written the same
+                            way <code>var</code>
+                            statements are.</p>
+
+                        <code class="code-box">let hello = "Hello!";</code>
+                        <p>The key difference is not in the syntax, but in the semantics, which we’ll now dive into.</p>
+
+                        <p>When a variable is declared using let, it uses what some call lexical-scoping or
+                            block-scoping.
+                            Unlike
+                            variables declared with var whose scopes leak out to their containing function,
+                            block-scoped
+                            variables
+                            are not visible outside of their nearest containing block or for-loop.</p>
+
+                        <code class="code-box">function f(input: boolean) { <br>
+                        let a = 100; <br>
+                            <br>
+                        if (input) { <br>
+                        // Still okay to reference 'a' <br>
+                        let b = a + 1; <br>
+                        return b; <br>
+                        } <br>
+                        <br>
+                        // Error: 'b' doesn't exist here <br>
+                        return b; <br>
+                        }</code>
+                        <p>Here, we have two local variables a and b. a’s scope is limited to the body of f while b’s
+                            scope is
+                            limited to the containing if statement’s block.</p>
+
+                        <p>Variables declared in a catch clause also have similar scoping rules.</p>
+
+                        <code class="code-box">try { <br>
+                        throw "oh no!"; <br>
+                        } <br>
+                        catch (e) { <br>
+                        console.log("Oh well."); <br>
+                        } <br>
+                        <br>
+                        // Error: 'e' doesn't exist here <br>
+                        console.log(e);</code>
+                        <br>
+
+                        <h3>const declarations</h3>
+                        <p>const declarations are another way of declaring variables.</p>
+
+                        <code class="code-box">const numLivesForCat = 9;</code>
+
+                        <p>They are like let declarations but, as their name implies, their value cannot be changed
+                            once they are
+                            bound. In other words, they have the same scoping rules as let, but you can’t re-assign to
+                            them.</p>
+
+                        <p>This should not be confused with the idea that the values they refer to are immutable.</p>
+
+                        <code class="code-box">const numLivesForCat = 9; <br>
+                        const kitty = { <br>
+                        name: "Aurora", <br>
+                        numLives: numLivesForCat, <br>
+                        } <br>
+                        <br>
+                        // Error <br>
+                        kitty = { <br>
+                        name: "Danielle", <br>
+                        numLives: numLivesForCat <br>
+                        }; <br>
+                        <br>
+                        // all "okay" <br>
+                        kitty.name = "Rory"; <br>
+                        kitty.name = "Kitty"; <br>
+                        kitty.name = "Cat"; <br>
+                        kitty.numLives--;</code>
+
+                        <p>Unless you take specific measures to avoid it, the internal state of a <code>const</code>
+                            variable is still
+                            modifiable. Fortunately, TypeScript allows you to specify that members of an object are
+                            readonly. The
+                            chapter on Interfaces has the details.</p>
+
+                        <h3>let vs. const</h3>
+                        <p>Given that we have two types of declarations with similar scoping semantics, it’s natural to
+                            find
+                            ourselves asking which one to use. Like most broad questions, the answer is: it depends.</p>
+
+                        <p>Applying the principle of least privilege, all declarations other than those you plan to
+                            modify should
+                            use const. The rationale is that if a variable didn’t need to get written to, others
+                            working on the
+                            same codebase shouldn’t automatically be able to write to the object, and will need to
+                            consider whether
+                            they really need to reassign to the variable. Using const also makes code more predictable
+                            when
+                            reasoning about flow of data.</p>
+
+                        <p>Use your best judgement, and if applicable, consult the matter with the rest of your team.</p>
+
+                        <p>The majority of this handbook uses <code>let</code> declarations.</p>
+                    </article>
+                </section>
+                <section class="main-section" id="Classes">
+                    <header class="h2">Classes</header>
+                    <article>
+                        <p>Traditional JavaScript uses functions and prototype-based inheritance to build up reusable
+                            components, but this may feel a bit awkward to programmers more comfortable with an
+                            object-oriented approach, where classes inherit functionality and objects are built from
+                            these
+                            classes. Starting with ECMAScript 2015, also known as ECMAScript 6, JavaScript programmers
+                            will
+                            be able to build their applications using this object-oriented class-based approach. In
+                            TypeScript, we allow developers to use these techniques now, and compile them down to
+                            JavaScript that works across all major browsers and platforms, without having to wait for
+                            the
+                            next version of JavaScript.</p>
+
+                        <p>Let’s take a look at a simple class-based example:</p>
+
+                        <code class="code-box">class Greeter { <br>
+                                greeting: string; <br>
+                                constructor(message: string) { <br>
+                                this.greeting = message; <br>
+                                } <br>
+                                greet() { <br>
+                                return "Hello, " + this.greeting; <br>
+                                } <br>
+                                } <br>
+        <br>
+                                let greeter = new Greeter("world"); <br></code>
+                        <br>
+                        <p>The syntax should look familiar if you’ve used C# or Java before. We declare a new class
+                            Greeter. This class has three members: a property called <code>greeting</code>, a <code>constructor</code>,
+                            and a method
+                            greet.</p>
+
+                        <p>You’ll notice that in the class when we refer to one of the members of the class we prepend
+                            this.. This denotes that it’s a member access.</p>
+
+                        <p>In the last line we construct an instance of the Greeter class using new. This calls into
+                            the
+                            constructor we defined earlier, creating a new object with the Greeter shape, and running
+                            the
+                            constructor to initialize it.</p>
+
+                        <h3>Inheritance</h3>
+                        <p>In TypeScript, we can use common object-oriented patterns. One of the most fundamental
+                            patterns
+                            in class-based programming is being able to extend existing classes to create new ones
+                            using
+                            inheritance.</p>
+
+                        <p>Let’s take a look at an example:</p>
+
+                        <code class="code-box">class Animal {<br>
+                                move(distanceInMeters: number = 0) {<br>
+                                console.log(`Animal moved ${distanceInMeters}m.`);<br>
+                                }<br>
+                                }<br>
+        <br>
+                                class Dog extends Animal {<br>
+                                bark() {<br>
+                                console.log('Woof! Woof!');<br>
+                                }<br>
+                                }<br>
+        
+                                const dog = new Dog();<br>
+                                dog.bark();<br>
+                                dog.move(10);<br>
+                                dog.bark();</code>
+                        <br><br>
+                        <p>This example shows the most basic inheritance feature: classes inherit properties and
+                            methods
+                            from base classes. Here, Dog is a derived class that derives from the Animal base class
+                            using
+                            the extends keyword. Derived classes are often called subclasses, and base classes are
+                            often
+                            called superclasses.</p>
+
+                        <p>Because Dog extends the functionality from Animal, we were able to create an instance of Dog
+                            that could both <code>bark()</code> and <code>move()</code>.</p>
+                    </article>
+                </section>
+                <section class="main-section" id="Functions">
+                    <header class="h2">Functions</header>
+                    <article>
+                        <p>To begin, just as in JavaScript, TypeScript functions can be created both as a named
+                            function
+                            or as an anonymous function. This allows you to choose the most appropriate approach for
+                            your
+                            application, whether you’re building a list of functions in an API or a one-off function to
+                            hand off to another function.</p>
+
+                        <p>To quickly recap what these two approaches look like in JavaScript:</p>
+
+                        <code class="code-box">  // Named function
+                                function add(x, y) {<br>
+                                return x + y;<br>
+                                }<br>
+        <br>
+                                // Anonymous function<br>
+                                let myAdd = function(x, y) { return x + y; };<br>
+                              </code>
+                        <br><br>
+                        <p>Just as in JavaScript, functions can refer to variables outside of the function body. When
+                            they
+                            do so, they’re said to capture these variables. While understanding how this works, and the
+                            trade-offs when using this technique, are outside of the scope of this article, having a
+                            firm
+                            understanding how this mechanic is an important piece of working with JavaScript and
+                            TypeScript.</p>
+
+                        <code class="code-box">let z = 100;<br>
+        <br>
+                                function addToZ(x, y) {<br>
+                                return x + y + z;<br>
+                                }<br></code><br>
+                    </article>
+                </section>
+                <section class="main-section" id="Reference">
+                    <header class="h2">Reference</header>
+                    <article>
+                        <li>All the documentation in this page is taken from <a href="https://www.typescriptlang.org/docs/home.html"
+                                target="_blank">TypeScript Official Documentation Page</a>
+                    </article>
+                </section>
+            </main>
+        </div>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+</body>
+
+</html>
