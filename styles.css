@@ -37,6 +37,10 @@ span{
     border-radius:5px;
 }
 
+.h2{
+    font-size: 12px;
+}
+
 main {
     max-height: 100%;
     overflow-y: auto;
