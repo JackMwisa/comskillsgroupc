@@ -62,40 +62,13 @@ p{
 
 
 
-  /////
 
-  -webkit-font-smoothing: antialiased
-  -moz-osx-font-smoothing: grayscale
+  hr {
 
-span
-  color: #666
-  font-size: 12px
-  display: block
-  position: absolute
-  bottom: 10px
-  position: absolute
-  width: 90%
-  left: 50%
-  top: 45%
-  bottom: auto
-  right: auto
-  transform: translateX(-50%) translateY(-50%)
-  text-align: center
-  a
-    color: #000000
-    text-decoration: none
-  .fa
-    color: #E90606
-    margin: 0 3px
-    font-size: 10px
-    animation: pound .35s infinite alternate
-    -webkit-animation: pound .35s infinite alternate
-
-@-webkit-keyframes pound
-  to
-    transform: scale(1.1)
-
-
-@keyframes pound
-  to
-    transform: scale(1.1)
+    position: relative;
+    top: 20px;
+    border: none;
+    height: 12px;
+    background: black;
+    margin-bottom: 50px;
+  }
