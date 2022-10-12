@@ -1,5 +1,6 @@
 body, html, .container-fluid {
     height: 100%;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 .wrapper {
@@ -18,6 +19,7 @@ nav{
 
 .navbar-header{
     font-size: 30px;
+    font-weight: 600;
 }
 
 span{
@@ -44,4 +46,8 @@ span{
 main {
     max-height: 100%;
     overflow-y: auto;
+}
+
+p{
+    text-align: justify;
 }
