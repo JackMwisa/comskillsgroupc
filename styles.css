@@ -8,6 +8,10 @@ body, html, .container-fluid {
 }
 
 .navbar{
+    position: fixed;
+}
+
+nav{
     position: sticky;
 }
 
